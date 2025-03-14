@@ -38,6 +38,14 @@ func dialog_player():
 func update_strength():
 	$CanvasLayer/strength_player.text = "Сила: %s" %State.strength_status
 
+func location_found(name):
+	$CanvasLayer/WelcomeLabel.text = name
+	$CanvasLayer/WelcomeLabel/AnimationPlayer.play("show_text")
+
+	await get_tree().create_timer(3.0).timeout
+	$CanvasLayer/WelcomeLabel/AnimationPlayer.play("hide_text")
+	$CanvasLayer/WelcomeLabel.modulate = Color(255, 255, 255, 0)
+
 func move_player():
 	var input_direction := Vector2(
 	Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
@@ -80,12 +88,7 @@ func move_player():
 
 func _on_player_area_entered(area: Area2D) -> void:
 	body = area.name
-	if body == "Location":
-		$CanvasLayer/WelcomeLabel.text = "Лесок"
-		$CanvasLayer/WelcomeLabel.modulate = Color(255, 255, 255, 1)
-		await get_tree().create_timer(3.0).timeout
-		$CanvasLayer/WelcomeLabel.modulate = Color(255, 255, 255, 0)
-	elif body == "train":
+	if body == "train":
 		can_train = true
 	if body != "Location" and body != "train":
 		can_dialog = true

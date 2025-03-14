@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dgcdmi8n5waay"]
+[gd_scene load_steps=17 format=4 uid="uid://dgcdmi8n5waay"]
 
 [ext_resource type="Script" uid="uid://kfkt5euq2ajp" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dnpkiscvflhl7" path="res://scenes/player.tscn" id="2_0xm2m"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c3uxsojgclxfj" path="res://scenes/goblin.tscn" id="8_tipki"]
 [ext_resource type="Texture2D" uid="uid://cipkflfrly65j" path="res://sprites/tileset/TX Plant.png" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bwyx4vosc0f5h" path="res://scenes/red_hat.tscn" id="10_choun"]
+[ext_resource type="Script" uid="uid://8t4s318y7ien" path="res://scenes/location.gd" id="11_ya4ey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 resource_name = "grass"
@@ -567,7 +568,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_choun")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85g3d"]
-radius = 468.876
+radius = 576.022
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
@@ -602,7 +603,20 @@ tile_map_data = PackedByteArray("AADi//X/AAASAAQAAADi//b/AAASAAUAAADi//f/AAASAAY
 tile_set = SubResource("TileSet_ya4ey")
 
 [node name="Location" type="Area2D" parent="."]
+script = ExtResource("11_ya4ey")
+location_name = "лес"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Location"]
 position = Vector2(-1957, -434)
 shape = SubResource("CircleShape2D_85g3d")
+
+[node name="Location2" type="Area2D" parent="."]
+script = ExtResource("11_ya4ey")
+location_name = "школа"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Location2"]
+position = Vector2(128, -1463)
+shape = SubResource("CircleShape2D_85g3d")
+
+[connection signal="area_entered" from="Location" to="Location" method="_on_area_entered"]
+[connection signal="area_entered" from="Location2" to="Location2" method="_on_area_entered"]
