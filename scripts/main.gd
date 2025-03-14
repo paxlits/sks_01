@@ -50,7 +50,14 @@ func load_scene():
 			State.change_strength(save_data["strength"])
 			for obj in $".".get_children():
 				if obj.name in killed:
-					State.killing(obj.name)  # Удаляем объект, если он не должен существовать
+					print("qq")
+					print(obj.name)
+					State.killing(obj.name)
+				else:
+					print(obj.name)
+					print("ff")
+					State.recovery(obj.name)  # Удаляем объект, если он не должен существовать
+		
 	else:
 			print("Файл сохранения не найден.")
 

@@ -21,7 +21,20 @@ func killing(name):
 	print(character)
 	if character.name == "goblin":
 		helped_sister = true
-	character.queue_free()
+	character.hide()  # Скрыть объект
+	character.set_process(false)  # Отключить обработку
+	character.set_physics_process(false)
+
+func recovery(name):
+	var root = get_tree().get_root()
+	var character = root.get_node("Main/" + name)
+	print(root.get_children())
+	print(character)
+	if character.name == "goblin":
+		helped_sister = false
+	character.show()
+	character.set_process(true)
+	character.set_physics_process(true)
 
 func cut_strength(currency):
 	var root = get_tree().get_root()
