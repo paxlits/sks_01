@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://ddbfcgvf5ip2h"
+path="res://.godot/imported/goblin.dialogue-50443ac64689294d71a2cf9e0950e7e0.tres"
+
+[deps]
+
+source_file="res://dialogue/goblin.dialogue"
+dest_files=["res://.godot/imported/goblin.dialogue-50443ac64689294d71a2cf9e0950e7e0.tres"]
+
+[params]
+
+defaults=true

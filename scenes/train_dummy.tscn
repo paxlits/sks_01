@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfmp7mcyj2xo2"]
+
+[ext_resource type="Script" uid="uid://cgf5aurrsrvjw" path="res://scenes/train_dummy.gd" id="1_3e435"]
+[ext_resource type="Texture2D" uid="uid://doelml3woe2cf" path="res://sprites/characters/Training Dummy Sprite Sheet.png" id="1_pl13m"]
+[ext_resource type="AudioStream" uid="uid://bjd7oamt75c6n" path="res://8a7da55f4943890.mp3" id="3_nhyg5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqgjo"]
+radius = 76.0066
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhyg5"]
+atlas = ExtResource("1_pl13m")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aunxx"]
+atlas = ExtResource("1_pl13m")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hp7u"]
+atlas = ExtResource("1_pl13m")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jioig"]
+atlas = ExtResource("1_pl13m")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0frs"]
+atlas = ExtResource("1_pl13m")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxpkj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhyg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aunxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hp7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jioig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0frs")
+}],
+"loop": false,
+"name": &"kicked",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba2xx"]
+size = Vector2(72, 47)
+
+[node name="train_dummy" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_3e435")
+
+[node name="train" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="train"]
+shape = SubResource("CircleShape2D_tqgjo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_gxpkj")
+animation = &"kicked"
+frame_progress = 0.599
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 8.5)
+shape = SubResource("RectangleShape2D_ba2xx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nhyg5")

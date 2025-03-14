@@ -1,0 +1,14 @@
+~ start
+лёша: привет
+старшак: здорова чмо
+- наебашить(нужно 37 силы)
+	if State.strength_status >= 37:
+		do State.killing("goblin")
+	else:
+		старшак: ты чё вообще охуел
+		do State.cut_strength(10)
+- не трогай мою сестру
+	старшак: ты чё берега попутал зумерок
+	do State.cut_strength(5)
+- *убежать в слезах* => END
+=> END

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://cdfrw3vfawhin"
+path="res://.godot/imported/boobs.dialogue-a57861f70144dc2512600562dadc8576.tres"
+
+[deps]
+
+source_file="res://dialogue/boobs.dialogue"
+dest_files=["res://.godot/imported/boobs.dialogue-a57861f70144dc2512600562dadc8576.tres"]
+
+[params]
+
+defaults=true

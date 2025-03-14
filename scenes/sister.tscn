@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dk0tkfhe3280k"]
+
+[ext_resource type="Texture2D" uid="uid://dcm7lrpllulk2" path="res://sprites/characters/Orange_Head_Idle-Sheet.png" id="1_2w0em"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ciucn"]
+radius = 63.0079
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayafv"]
+size = Vector2(41, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj77v"]
+atlas = ExtResource("1_2w0em")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqdjc"]
+atlas = ExtResource("1_2w0em")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wqc6"]
+atlas = ExtResource("1_2w0em")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukx8q"]
+atlas = ExtResource("1_2w0em")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqvdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj77v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqdjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wqc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukx8q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="sister" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="sister" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sister"]
+shape = SubResource("CircleShape2D_ciucn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 14.5)
+shape = SubResource("RectangleShape2D_ayafv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_vqvdm")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="name" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -64.0
+offset_right = 23.0
+offset_bottom = -41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+text = "доска"

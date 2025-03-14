@@ -1,0 +1,23 @@
+~ start
+if State.strength_status >= 10 and State.strength_status < 50:
+	Сиська: привет
+elif State.strength_status >= 50:
+	Сиська: привет качок
+else:
+	Сиська: привет лох ёбаный
+лёша: привет сиська
+
+- убить(нужно 5 силы)
+	if State.strength_status >= 5:
+		do State.killing("boobs")
+	else:
+		sks: у вас недостаточно силы
+- покажи грудь
+	if State.strength_status >= 50:
+		Сиська: хорошо, но только на секунду
+		do State.show_boobs()
+	else:
+		Сиська: мне нравятся накаченные парни
+- *убежать в слезах*
+	=> END
+=> END
