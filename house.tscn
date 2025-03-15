@@ -34,7 +34,7 @@ polygon = PackedVector2Array(-54.4445, -61.9445, -53.3334, 35.8334, 53.0556, 40.
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(3.6, 3.6)
-polygon = PackedVector2Array(-64.4445, -59.1667, -64, 85, -19, 86, -20.2778, 76.6667, -56, 76, -58.3334, -35.8334, 53.0556, -34.4445, 53, 76, 15.8333, 74.4445, 13, 85, 62, 85, 64, -62)
+polygon = PackedVector2Array(-64.4445, -59.1667, -65.5556, 86.6667, -17.7778, 86.9445, -18.0556, 78.6111, -59.4444, 79.1667, -59.1667, -35, 54.7222, -31.6667, 55, 79.1667, 11.9444, 79.1667, 11.9444, 85.8333, 62.2222, 86.3889, 64, -62)
 
 [connection signal="area_entered" from="Location" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Location" to="." method="_on_area_2d_area_exited"]

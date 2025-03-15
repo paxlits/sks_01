@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://crsfnmyvhu6hf" path="res://sprites/characters/64X128_Idle_Free.png" id="1_uyby8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q02d4"]
-size = Vector2(34, 53)
+size = Vector2(23, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvhus"]
 atlas = ExtResource("1_uyby8")
@@ -88,7 +88,7 @@ radius = 69.1158
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 16.5)
+position = Vector2(0.5, -8.5)
 shape = SubResource("RectangleShape2D_q02d4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -100,6 +100,7 @@ frame_progress = 0.38049
 [node name="boobs" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boobs"]
+position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_ciqqb")
 
 [node name="name" type="Label" parent="."]
