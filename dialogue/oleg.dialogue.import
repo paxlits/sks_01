@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://2mi6lni320rr"
+path="res://.godot/imported/oleg.dialogue-9d23f68ea361e0464f48053e846cbbab.tres"
+
+[deps]
+
+source_file="res://dialogue/oleg.dialogue"
+dest_files=["res://.godot/imported/oleg.dialogue-9d23f68ea361e0464f48053e846cbbab.tres"]
+
+[params]
+
+defaults=true

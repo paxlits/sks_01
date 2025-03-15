@@ -93,7 +93,7 @@ zoom_down={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/boobs.dialogue", "res://dialogue/sister.dialogue", "res://dialogue/goblin.dialogue", "res://dialogue/red_hat.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/boobs.dialogue", "res://dialogue/sister.dialogue", "res://dialogue/goblin.dialogue", "res://dialogue/oleg.dialogue", "res://dialogue/old.dialogue", "res://dialogue/slime.dialogue")
 
 [rendering]
 
