@@ -6,8 +6,14 @@ var can_train = false
 var can_train2 = true
 var last_direction = Vector2.ZERO
 @export var SPEED = 600.0
+var WALK_SPEED = 600
+var RUN_SPEED = 2000
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("run"):
+		SPEED = RUN_SPEED
+	else:
+		SPEED = WALK_SPEED
 	dialog_player()
 	move_player()
 	move_and_slide()
