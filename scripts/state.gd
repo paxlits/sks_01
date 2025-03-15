@@ -15,26 +15,37 @@ func change_strength(currency):
 	player.update_strength()
 func killing(name):
 	var root = get_tree().get_root()
+	var player = root.get_node("Main/Player")
 	var character = root.get_node("Main/" + name)
-	print(root.get_children())
 	killed.append(name)
-	print(character)
 	if character.name == "goblin":
 		helped_sister = true
+	var collision_character = character.get_node("CollisionShape2D")
+	var area_character = character.get_node(str(character.name))
+	area_character.monitorable = false # Делаем ноду немониторируемой для других объектов
+	area_character.monitoring = false  # Отключаем мониторинг сигналов
+	collision_character.disabled = true
 	character.hide()  # Скрыть объект
-	character.set_process(false)  # Отключить обработку
+	character.set_process(false)
 	character.set_physics_process(false)
+	
 
 func recovery(name):
 	var root = get_tree().get_root()
 	var character = root.get_node("Main/" + name)
-	print(root.get_children())
-	print(character)
-	if character.name == "goblin":
-		helped_sister = false
-	character.show()
-	character.set_process(true)
-	character.set_physics_process(true)
+	
+	if character is RigidBody2D: 
+		if character.has_node(str(character.name)):
+			var collision_character = character.get_node("CollisionShape2D")
+			var area_character = character.get_node(str(character.name))
+			area_character.monitoring = true
+			area_character.monitorable = true
+			if character.name == "goblin":
+				helped_sister = false
+			collision_character.disabled = false
+			character.show()
+			character.set_process(true)
+			character.set_physics_process(true)
 
 func cut_strength(currency):
 	var root = get_tree().get_root()

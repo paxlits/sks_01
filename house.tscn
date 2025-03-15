@@ -9,18 +9,18 @@
 gravity_scale = 0.0
 script = ExtResource("1_6syyc")
 
-[node name="house" type="Sprite2D" parent="."]
+[node name="main_house" type="Sprite2D" parent="."]
 scale = Vector2(3.6, 3.6)
 texture = ExtResource("2_o1325")
 
-[node name="roof" type="Sprite2D" parent="house"]
+[node name="roof" type="Sprite2D" parent="main_house"]
 visible = false
 z_index = 70
 position = Vector2(0, 4)
 scale = Vector2(1, 1.10938)
 texture = ExtResource("3_vy7fe")
 
-[node name="door" type="Sprite2D" parent="house"]
+[node name="door" type="Sprite2D" parent="main_house"]
 z_index = 50
 position = Vector2(-1.94444, 70.5556)
 texture = ExtResource("4_o1325")
@@ -30,11 +30,11 @@ position = Vector2(-10, 103)
 scale = Vector2(3.6, 3.6)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Location"]
-polygon = PackedVector2Array(-54.4445, -61.9445, -53.3334, 35.8334, 53.0556, 40.5556, 53.6112, -58.6112)
+polygon = PackedVector2Array(-51.9444, -59.4444, -52.7778, 44.7222, 52.7778, 44.7222, 53.6111, -59.4444)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(3.6, 3.6)
-polygon = PackedVector2Array(-64.4445, -59.1667, -65.5556, 86.6667, -17.7778, 86.9445, -18.0556, 78.6111, -59.4444, 79.1667, -59.1667, -35, 54.7222, -31.6667, 55, 79.1667, 11.9444, 79.1667, 11.9444, 85.8333, 62.2222, 86.3889, 64, -62)
+polygon = PackedVector2Array(-66.1111, -59.1667, -66.1111, 86.1111, -14.4444, 85.8333, -14.4444, 79.1667, -58.8889, 79.1667, -59.1667, -35, 53.6111, -35, 55, 79.1667, 10.5556, 79.1667, 10.5556, 85.8333, 62.2222, 86.3889, 65, -59.1667)
 
 [connection signal="area_entered" from="Location" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Location" to="." method="_on_area_2d_area_exited"]
