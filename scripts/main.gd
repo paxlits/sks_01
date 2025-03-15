@@ -24,11 +24,9 @@ func save_scene():
 	save_data["player_position"] = [$Player.position.x, $Player.position.y]
 	save_data["strength"] = State.strength_status
 	save_data["killed"] = State.killed
-	print(State.killed)
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_data))
 	file.close()
-	print("Игра сохранена!")
 func load_scene():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
@@ -54,8 +52,6 @@ func load_scene():
 				else:
 					State.recovery(obj.name)  # Удаляем объект, если он не должен существовать
 		
-	else:
-			print("Файл сохранения не найден.")
 
 func pauseMenu():
 	if paused:
