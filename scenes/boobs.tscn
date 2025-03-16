@@ -93,9 +93,9 @@ shape = SubResource("RectangleShape2D_q02d4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rx6j0")
-animation = &"idle"
+animation = &"showing"
 autoplay = "idle"
-frame_progress = 0.38049
+frame_progress = 0.634599
 
 [node name="boobs" type="Area2D" parent="."]
 

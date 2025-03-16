@@ -9,8 +9,8 @@ var last_direction = Vector2.ZERO
 var WALK_SPEED = 600
 var RUN_SPEED = 2000
 
-func _ready():
-	$GPUParticles2D.emitting = false
+#func _ready():
+	#$GPUParticles2D.emitting = false
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("run"):
