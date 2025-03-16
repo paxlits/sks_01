@@ -279,6 +279,27 @@ texture = ExtResource("2_h2yge")
 [sub_resource type="TileSet" id="TileSet_h2yge"]
 sources/1 = SubResource("TileSetAtlasSource_1bvp3")
 
+[sub_resource type="Gradient" id="Gradient_jkv2x"]
+offsets = PackedFloat32Array(0, 0.126915, 0.80744, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jbj1t"]
+gradient = SubResource("Gradient_jkv2x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_muem4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+gravity = Vector3(0, 10, 0)
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_jbj1t")
+anim_offset_max = 1.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jbj1t"]
 texture = ExtResource("10_jkv2x")
 8:0/0 = 0
@@ -1256,28 +1277,7 @@ physics_layer_0/collision_layer = 1
 sources/6 = SubResource("TileSetAtlasSource_jbj1t")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85g3d"]
-radius = 436.01
-
-[sub_resource type="Gradient" id="Gradient_jkv2x"]
-offsets = PackedFloat32Array(0, 0.126915, 0.80744, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jbj1t"]
-gradient = SubResource("Gradient_jkv2x")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_muem4"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(1000, 1000, 1)
-spread = 20.0
-initial_velocity_min = 20.0
-initial_velocity_max = 80.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = 50.0
-gravity = Vector3(0, 10, 0)
-scale_max = 1.5
-color_ramp = SubResource("GradientTexture1D_jbj1t")
-anim_offset_max = 1.0
+radius = 1460.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
@@ -1290,6 +1290,17 @@ tile_set = SubResource("TileSet_h2yge")
 
 [node name="PauseMenu" parent="Player" instance=ExtResource("4_tbgi4")]
 z_index = 4096
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
+z_index = 99
+position = Vector2(-543, 0)
+amount = 200
+texture = ExtResource("15_jbj1t")
+lifetime = 2.0
+speed_scale = 0.8
+fixed_fps = 60
+visibility_rect = Rect2(-100, -100, 1500, 1500)
+process_material = SubResource("ParticleProcessMaterial_muem4")
 
 [node name="boobs" parent="." instance=ExtResource("4_jyhfs")]
 position = Vector2(557, -222)
@@ -1313,15 +1324,7 @@ script = ExtResource("11_ya4ey")
 location_name = "лес"
 
 [node name="HitboxLocation" type="CollisionShape2D" parent="Location"]
-position = Vector2(-1957, -434)
-shape = SubResource("CircleShape2D_85g3d")
-
-[node name="Location2" type="Area2D" parent="."]
-script = ExtResource("11_ya4ey")
-location_name = "школа"
-
-[node name="HitboxLocation" type="CollisionShape2D" parent="Location2"]
-position = Vector2(128, -1463)
+position = Vector2(-2984, -972)
 shape = SubResource("CircleShape2D_85g3d")
 
 [node name="house" parent="." instance=ExtResource("12_eb6dy")]
@@ -1336,14 +1339,6 @@ position = Vector2(-150, 57)
 [node name="slime" parent="house" instance=ExtResource("15_jkv2x")]
 position = Vector2(131, 49)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-z_index = 99
-position = Vector2(-3192, -1265)
-amount = 100
-texture = ExtResource("15_jbj1t")
-lifetime = 5.0
-visibility_rect = Rect2(-100, -100, 1500, 1500)
-process_material = SubResource("ParticleProcessMaterial_muem4")
-
 [connection signal="area_entered" from="Location" to="Location" method="_on_area_entered"]
-[connection signal="area_entered" from="Location2" to="Location2" method="_on_area_entered"]
+[connection signal="area_exited" from="Location" to="." method="_on_location_area_exited"]
+[connection signal="area_exited" from="Location" to="Location" method="_on_area_exited"]
