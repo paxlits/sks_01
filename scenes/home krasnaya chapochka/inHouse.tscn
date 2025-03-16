@@ -1,5 +1,6 @@
-[gd_scene load_steps=70 format=4 uid="uid://babsm2v362m6m"]
+[gd_scene load_steps=73 format=4 uid="uid://babsm2v362m6m"]
 
+[ext_resource type="Script" uid="uid://cf0jsuoucay7j" path="res://scenes/home krasnaya chapochka/in_house.gd" id="1_f2ur7"]
 [ext_resource type="Texture2D" uid="uid://dx525hvstsond" path="res://scenes/home krasnaya chapochka/!fire.png" id="1_uiev3"]
 [ext_resource type="Texture2D" uid="uid://cxrhl0qcbqfb4" path="res://scenes/home krasnaya chapochka/!$door.png" id="2_f2ur7"]
 [ext_resource type="Texture2D" uid="uid://cyjnecy1g78o5" path="res://scenes/home krasnaya chapochka/Outside_A5.png" id="3_bjef4"]
@@ -15,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dyshn75em374g" path="res://scenes/home krasnaya chapochka/Outside_A3.png" id="13_cc4e3"]
 [ext_resource type="Texture2D" uid="uid://bbdhnxjvb1scl" path="res://scenes/home krasnaya chapochka/Outside_A4.png" id="14_ie0mc"]
 [ext_resource type="Texture2D" uid="uid://ct8ire6k4bspe" path="res://scenes/home krasnaya chapochka/!$clock.png" id="15_7tugq"]
+[ext_resource type="PackedScene" uid="uid://dnpkiscvflhl7" path="res://scenes/player.tscn" id="17_bjef4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hvajw"]
 texture = ExtResource("1_uiev3")
@@ -6106,8 +6108,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uiev3"]
+size = Vector2(22.0176, 34.0473)
+
 [node name="InHouse" type="Node2D"]
 scale = Vector2(3.65945, 3.65945)
+script = ExtResource("1_f2ur7")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-703.79, 35.6959)
@@ -6166,3 +6172,17 @@ polygon = PackedVector2Array(278, -255, 279, -224, 298, -225, 299, -246, 284, -2
 [node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="CollisionPolygon2D"]
 position = Vector2(-349.529, 195.666)
 polygon = PackedVector2Array(403, -244, 404, -191, 429, -192, 430, -256, 423, -250, 420, -244)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(389.129, 48.9145)
+scale = Vector2(0.967208, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.22244, 12.7622)
+scale = Vector2(3.94961, 1)
+shape = SubResource("RectangleShape2D_uiev3")
+
+[node name="Player" parent="." instance=ExtResource("17_bjef4")]
+position = Vector2(392.135, -13.6633)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
