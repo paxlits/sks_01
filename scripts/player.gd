@@ -99,11 +99,14 @@ func _on_player_area_entered(area: Area2D) -> void:
 	body = area.name
 	if body == "train":
 		can_train = true
-	if not area.has_node("HitboxLocation") and body != "train":
-		can_dialog = true
 
 
 
 func _on_player_area_exited(area: Area2D) -> void:
 	can_dialog = false
 	can_train = false
+
+
+func _on_player_body_entered(body: Node2D) -> void:
+	if body.has_node("name"):
+		can_dialog = true
