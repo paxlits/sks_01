@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://babsm2v362m6m"]
+[gd_scene load_steps=71 format=4 uid="uid://babsm2v362m6m"]
 
 [ext_resource type="Texture2D" uid="uid://dx525hvstsond" path="res://scenes/home krasnaya chapochka/!fire.png" id="1_uiev3"]
 [ext_resource type="Texture2D" uid="uid://cxrhl0qcbqfb4" path="res://scenes/home krasnaya chapochka/!$door.png" id="2_f2ur7"]
@@ -6106,6 +6106,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uiev3"]
+size = Vector2(85.9678, 9.18021)
+
 [node name="InHouse" type="Node2D"]
 scale = Vector2(3.65945, 3.65945)
 
@@ -6166,3 +6169,10 @@ polygon = PackedVector2Array(278, -255, 279, -224, 298, -225, 299, -246, 284, -2
 [node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="CollisionPolygon2D"]
 position = Vector2(-349.529, 195.666)
 polygon = PackedVector2Array(403, -244, 404, -191, 429, -192, 430, -256, 423, -250, 420, -244)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(397.519, 73.1796)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uiev3")
