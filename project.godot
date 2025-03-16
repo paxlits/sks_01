@@ -14,7 +14,8 @@ config/name="Solar Kid Simulator"
 run/main_scene="uid://bqjfjyuwri5m6"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://dvddmfcmljgux"
-config/icon="res://icon.svg"
+config/icon="uid://bifiwpnbpxg6s"
+config/windows_native_icon="res://qq.ico"
 boot_splash/minimum_display_time=2000
 
 [autoload]
