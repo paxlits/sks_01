@@ -51,6 +51,8 @@ func cut_strength(currency):
 	var root = get_tree().get_root()
 	var player = root.get_node("Main/Player")
 	var camera = player.get_node("Camera2D")
+	var audio = player.get_node("sound_damage")
+	audio.play()
 	camera.apply_shake()
 	strength_status -= currency
 	player.update_strength()

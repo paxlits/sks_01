@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dgcdmi8n5waay"]
+[gd_scene load_steps=24 format=4 uid="uid://dgcdmi8n5waay"]
 
 [ext_resource type="Script" uid="uid://kfkt5euq2ajp" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dnpkiscvflhl7" path="res://scenes/player.tscn" id="2_0xm2m"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d2y17dk6of3xq" path="res://house.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://dv04pwi6l4j5w" path="res://scenes/oleg.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://bxul2eiuv20lr" path="res://scenes/old.tscn" id="14_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://ssfkp3xq857b" path="res://sprites/leaf.png" id="15_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://chreb4paq6f2m" path="res://scenes/slime.tscn" id="15_jkv2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
@@ -1257,6 +1258,27 @@ sources/6 = SubResource("TileSetAtlasSource_jbj1t")
 [sub_resource type="CircleShape2D" id="CircleShape2D_85g3d"]
 radius = 436.01
 
+[sub_resource type="Gradient" id="Gradient_jkv2x"]
+offsets = PackedFloat32Array(0, 0.126915, 0.80744, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jbj1t"]
+gradient = SubResource("Gradient_jkv2x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_muem4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+gravity = Vector3(0, 10, 0)
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_jbj1t")
+anim_offset_max = 1.0
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
 
@@ -1290,7 +1312,7 @@ tile_set = SubResource("TileSet_ya4ey")
 script = ExtResource("11_ya4ey")
 location_name = "лес"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Location"]
+[node name="HitboxLocation" type="CollisionShape2D" parent="Location"]
 position = Vector2(-1957, -434)
 shape = SubResource("CircleShape2D_85g3d")
 
@@ -1298,7 +1320,7 @@ shape = SubResource("CircleShape2D_85g3d")
 script = ExtResource("11_ya4ey")
 location_name = "школа"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Location2"]
+[node name="HitboxLocation" type="CollisionShape2D" parent="Location2"]
 position = Vector2(128, -1463)
 shape = SubResource("CircleShape2D_85g3d")
 
@@ -1313,6 +1335,15 @@ position = Vector2(-150, 57)
 
 [node name="slime" parent="house" instance=ExtResource("15_jkv2x")]
 position = Vector2(131, 49)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 99
+position = Vector2(-3192, -1265)
+amount = 100
+texture = ExtResource("15_jbj1t")
+lifetime = 5.0
+visibility_rect = Rect2(-100, -100, 1500, 1500)
+process_material = SubResource("ParticleProcessMaterial_muem4")
 
 [connection signal="area_entered" from="Location" to="Location" method="_on_area_entered"]
 [connection signal="area_entered" from="Location2" to="Location2" method="_on_area_entered"]

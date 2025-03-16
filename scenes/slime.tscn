@@ -62,7 +62,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 7.0
 }]
 
 [node name="slime" type="RigidBody2D"]
@@ -82,7 +82,7 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_vqvdm")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.949703
+frame_progress = 0.0778416
 
 [node name="name" type="Label" parent="."]
 offset_left = -25.0
