@@ -1,47 +1,39 @@
-[gd_scene load_steps=12 format=3 uid="uid://chreb4paq6f2m"]
+[gd_scene load_steps=11 format=3 uid="uid://chreb4paq6f2m"]
 
 [ext_resource type="Texture2D" uid="uid://daw33l48x2vlf" path="res://sprites/characters/slime.png" id="1_371uh"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ciucn"]
-radius = 63.0079
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayafv"]
-size = Vector2(41, 49)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p2gj0"]
-atlas = ExtResource("1_371uh")
-region = Rect2(0, 192, 32, 32)
+[ext_resource type="PackedScene" uid="uid://vb2esfl81qep" path="res://npc.tscn" id="1_p2gj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
 atlas = ExtResource("1_371uh")
-region = Rect2(32, 192, 32, 32)
+region = Rect2(0, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
 atlas = ExtResource("1_371uh")
-region = Rect2(64, 192, 32, 32)
+region = Rect2(32, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2npkn"]
 atlas = ExtResource("1_371uh")
-region = Rect2(96, 192, 32, 32)
+region = Rect2(64, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fd6lc"]
 atlas = ExtResource("1_371uh")
-region = Rect2(128, 192, 32, 32)
+region = Rect2(96, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gstla"]
 atlas = ExtResource("1_371uh")
-region = Rect2(160, 192, 32, 32)
+region = Rect2(128, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5wyi"]
 atlas = ExtResource("1_371uh")
+region = Rect2(160, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l8pv"]
+atlas = ExtResource("1_371uh")
 region = Rect2(192, 192, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vqvdm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vnioy"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p2gj0")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n6pvg")
 }, {
@@ -59,37 +51,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v5wyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l8pv")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 7.0
 }]
 
-[node name="slime" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="slime" instance=ExtResource("1_p2gj0")]
+npc_name = "слайм"
 
-[node name="slime" type="Area2D" parent="."]
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -9)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slime"]
-shape = SubResource("CircleShape2D_ciucn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 14.5)
-shape = SubResource("RectangleShape2D_ayafv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_vqvdm")
+[node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vnioy")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.87525
-
-[node name="name" type="Label" parent="."]
-offset_left = -25.0
-offset_top = -67.0
-offset_right = 26.0
-offset_bottom = -44.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 3
-text = "слайм"
+frame_progress = 0.181381

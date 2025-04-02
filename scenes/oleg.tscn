@@ -1,32 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://dv04pwi6l4j5w"]
+[gd_scene load_steps=8 format=3 uid="uid://dv04pwi6l4j5w"]
 
+[ext_resource type="PackedScene" uid="uid://vb2esfl81qep" path="res://npc.tscn" id="1_b02cu"]
 [ext_resource type="Texture2D" uid="uid://da1qufw14ei4j" path="res://sprites/characters/Character_Idle.png" id="1_bnekw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q02d4"]
-size = Vector2(75, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b02cu"]
-atlas = ExtResource("1_bnekw")
-region = Rect2(32, 32, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2tuj"]
 atlas = ExtResource("1_bnekw")
-region = Rect2(160, 32, 64, 64)
+region = Rect2(32, 32, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfp1b"]
 atlas = ExtResource("1_bnekw")
-region = Rect2(288, 32, 64, 64)
+region = Rect2(160, 32, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4g8fl"]
 atlas = ExtResource("1_bnekw")
+region = Rect2(288, 32, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woiav"]
+atlas = ExtResource("1_bnekw")
 region = Rect2(416, 32, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rx6j0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xyske"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b02cu")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l2tuj")
 }, {
@@ -35,41 +30,28 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4g8fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woiav")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ciqqb"]
-radius = 59.0
+[node name="oleg" instance=ExtResource("1_b02cu")]
+npc_name = "олег"
 
-[node name="oleg" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -6.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 16.5)
-shape = SubResource("RectangleShape2D_q02d4")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_rx6j0")
+[node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_xyske")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.376725
+frame_progress = 0.0860912
 
-[node name="oleg" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="oleg"]
-shape = SubResource("CircleShape2D_ciqqb")
-
-[node name="name" type="Label" parent="."]
-offset_left = -34.0
-offset_top = -76.0
-offset_right = 35.0
-offset_bottom = -53.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 3
-text = "олег"
-horizontal_alignment = 1
+[node name="Label" parent="." index="2"]
+offset_top = -71.0
+offset_bottom = -34.0

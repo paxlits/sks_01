@@ -1,73 +1,57 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3uxsojgclxfj"]
+[gd_scene load_steps=8 format=3 uid="uid://b63vxxy7onsjo"]
 
-[ext_resource type="Texture2D" uid="uid://bj0pf8btqxcv2" path="res://sprites/characters/orc1_idle_full.png" id="1_tjgje"]
+[ext_resource type="PackedScene" uid="uid://vb2esfl81qep" path="res://npc.tscn" id="1_u6mjv"]
+[ext_resource type="Texture2D" uid="uid://bj0pf8btqxcv2" path="res://sprites/characters/orc1_idle_full.png" id="2_vu5tg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q02d4"]
-size = Vector2(75, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4yait"]
-atlas = ExtResource("1_tjgje")
+[sub_resource type="AtlasTexture" id="AtlasTexture_macxp"]
+atlas = ExtResource("2_vu5tg")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q3g0h"]
-atlas = ExtResource("1_tjgje")
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyhpr"]
+atlas = ExtResource("2_vu5tg")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_76chb"]
-atlas = ExtResource("1_tjgje")
+[sub_resource type="AtlasTexture" id="AtlasTexture_utad2"]
+atlas = ExtResource("2_vu5tg")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1p1y"]
-atlas = ExtResource("1_tjgje")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s2j4"]
+atlas = ExtResource("2_vu5tg")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rx6j0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nebt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4yait")
+"texture": SubResource("AtlasTexture_macxp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q3g0h")
+"texture": SubResource("AtlasTexture_eyhpr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_76chb")
+"texture": SubResource("AtlasTexture_utad2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g1p1y")
+"texture": SubResource("AtlasTexture_3s2j4")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ciqqb"]
-radius = 91.0
+[node name="goblin" instance=ExtResource("1_u6mjv")]
+npc_name = "старшак"
 
-[node name="goblin" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, -21)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 16.5)
-shape = SubResource("RectangleShape2D_q02d4")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" parent="." index="1"]
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_rx6j0")
+sprite_frames = SubResource("SpriteFrames_6nebt")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="goblin" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="goblin"]
-shape = SubResource("CircleShape2D_ciqqb")
-
-[node name="name" type="Label" parent="."]
-offset_left = -34.0
+[node name="Label" parent="." index="2"]
 offset_top = -76.0
-offset_right = 35.0
-offset_bottom = -53.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 3
+offset_bottom = -39.0
 text = "старшак"

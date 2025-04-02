@@ -1,8 +1,17 @@
 [gd_scene load_steps=12 format=3 uid="uid://bfmp7mcyj2xo2"]
 
-[ext_resource type="Script" uid="uid://cgf5aurrsrvjw" path="res://scenes/train_dummy.gd" id="1_3e435"]
 [ext_resource type="Texture2D" uid="uid://doelml3woe2cf" path="res://sprites/characters/Training Dummy Sprite Sheet.png" id="1_pl13m"]
-[ext_resource type="AudioStream" uid="uid://c04dd2apr2hdh" path="res://8a7da55f4943890.mp3" id="3_nhyg5"]
+[ext_resource type="AudioStream" uid="uid://c04dd2apr2hdh" path="res://sounds/8a7da55f4943890.mp3" id="3_nhyg5"]
+
+[sub_resource type="GDScript" id="GDScript_lpjtn"]
+script/source = "extends RigidBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func kicked():
+	$AnimatedSprite2D.play(\"kicked\")
+	$AudioStreamPlayer2D.play()
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tqgjo"]
 radius = 76.0066
@@ -55,7 +64,7 @@ size = Vector2(31, 31)
 
 [node name="train_dummy" type="RigidBody2D"]
 gravity_scale = 0.0
-script = ExtResource("1_3e435")
+script = SubResource("GDScript_lpjtn")
 
 [node name="train" type="Area2D" parent="."]
 

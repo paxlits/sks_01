@@ -1,35 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxul2eiuv20lr"]
+[gd_scene load_steps=8 format=3 uid="uid://bxul2eiuv20lr"]
 
+[ext_resource type="PackedScene" uid="uid://vb2esfl81qep" path="res://npc.tscn" id="1_h8ol5"]
 [ext_resource type="Texture2D" uid="uid://q1pgeeimqrr5" path="res://sprites/characters/32x32.png" id="1_ncdcg"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ciucn"]
-radius = 51.0098
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayafv"]
-size = Vector2(41, 49)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8ol5"]
-atlas = ExtResource("1_ncdcg")
-region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ltxc"]
 atlas = ExtResource("1_ncdcg")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrsd4"]
 atlas = ExtResource("1_ncdcg")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mfhqv"]
 atlas = ExtResource("1_ncdcg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2aec"]
+atlas = ExtResource("1_ncdcg")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vqvdm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqg2o"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h8ol5")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7ltxc")
 }, {
@@ -38,37 +30,23 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mfhqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2aec")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[node name="old" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="old" instance=ExtResource("1_h8ol5")]
+npc_name = "старая проститутка"
 
-[node name="old" type="Area2D" parent="."]
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -2.75)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="old"]
-shape = SubResource("CircleShape2D_ciucn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 14.5)
-shape = SubResource("RectangleShape2D_ayafv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_vqvdm")
+[node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(2.2, 2.2)
+sprite_frames = SubResource("SpriteFrames_bqg2o")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.787403
-
-[node name="name" type="Label" parent="."]
-offset_left = -79.0
-offset_top = -77.0
-offset_right = 80.0
-offset_bottom = -54.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 3
-text = "старая проститутка"
