@@ -9,7 +9,7 @@ sister: блять почему так воняет
 	sister: меня трогал старшак, наебашь ему
 - убить(нужно 30 силы)
 	if State.strength_status >= 30:
-		do State.killing("sister")
+		do State.killing_without_save("sister")
 	else:
 		sister: ты чё делаешь долбоёб, я маме скажу что ты меня трогал
 => END

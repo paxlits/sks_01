@@ -13,8 +13,8 @@ var rng = RandomNumberGenerator.new()
 
 var shake_strength: float = 0.0
 
-func apply_shake():
-	shake_strength = randomStrength
+func apply_shake(strength):
+	shake_strength = strength
 	
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength,shake_strength),rng.randf_range(-shake_strength,shake_strength))

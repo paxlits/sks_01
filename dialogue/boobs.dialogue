@@ -9,7 +9,7 @@ else:
 
 - убить(нужно 5 силы)
 	if State.strength_status >= 5:
-		do State.killing("boobs")
+		do State.killing_without_save("boobs")
 	else:
 		sks: у вас недостаточно силы
 - покажи грудь

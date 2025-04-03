@@ -3,7 +3,7 @@
 goblin: здорова чмо
 - наебашить(нужно 37 силы)
 	if State.strength_status >= 37:
-		do State.killing("goblin")
+		do State.killing_without_save("goblin")
 	else:
 		goblin: ты чё вообще охуел
 		do State.cut_strength(10)

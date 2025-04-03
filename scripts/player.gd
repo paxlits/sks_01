@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 
 func dialog_player():
-	if can_dialog:
+	if can_dialog and !state_dialog:
 		$CanvasLayer/Tip.text = "Нажмите \"E\", чтобы поговорить"
 		$CanvasLayer/Tip.modulate = Color(255, 255, 255, 1)
 		$CanvasLayer/Tip.show()
@@ -38,12 +38,11 @@ func dialog_player():
 		if can_dialog and !state_dialog:
 			state_dialog = true
 			
-			print(nearest_body_object.name)
 			DialogueManager.show_example_dialogue_balloon(load("res://dialogue/" + nearest_body_object.name + ".dialogue"), "start")
 			await DialogueManager.dialogue_ended
 			state_dialog = false
 	if can_train and Input.is_action_just_pressed("attack") and can_train2:
-		State.up_strength()
+		State.up_strength(1)
 		$"../train_dummy".kicked()
 		update_strength()
 		can_train2 = false
@@ -115,7 +114,6 @@ func _on_player_area_exited(area: Area2D) -> void:
 
 
 func _on_player_body_entered(body: Node2D) -> void:
-	print(body)
 	
 	if body.is_in_group("npcs"):
 		nearest_body_object = body

@@ -4,18 +4,33 @@ var strength_status = 0
 var helped_sister = false
 var killed = []
 
-
-func up_strength():
-	strength_status += 1
+func up_strength(currency):
+	strength_status += currency
 
 func change_strength(currency):
-	var root = get_tree().get_root()
-	var player = root.get_node("Main/Player")
+	var player = get_node("/root/Main/Player")
 	strength_status = int(currency)
 	player.update_strength()
-func killing(name):
+
+func killing_without_save(name):
 	var player = get_node("/root/Main/Player")
 	var character = get_node("/root/Main/" + name)
+	var anim = character.get_node("AnimationPlayer")
+	var camera = player.get_node("Camera2D")
+	var audio = player.get_node("sound_damage")
+	
+	anim.play("death")
+	audio.play()
+	camera.apply_shake(5)
+	await anim.animation_finished
+	killing(name)
+	strength_status += character.reward
+	player.update_strength()
+func killing(name):
+	var current_delta = get_process_delta_time()
+	var player = get_node("/root/Main/Player")
+	var character = get_node("/root/Main/" + name)
+	
 	killed.append(name)
 	if character.name == "goblin":
 		helped_sister = true
@@ -48,12 +63,11 @@ func recovery(name):
 
 
 func cut_strength(currency):
-	var root = get_tree().get_root()
-	var player = root.get_node("Main/Player")
+	var player = get_node("/root/Main/Player")
 	var camera = player.get_node("Camera2D")
 	var audio = player.get_node("sound_damage")
 	audio.play()
-	camera.apply_shake()
+	camera.apply_shake(30)
 	strength_status -= currency
 	player.update_strength()
 

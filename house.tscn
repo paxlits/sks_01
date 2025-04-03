@@ -10,19 +10,19 @@ gravity_scale = 0.0
 script = ExtResource("1_6syyc")
 
 [node name="main_house" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
 scale = Vector2(3.6, 3.6)
 texture = ExtResource("2_o1325")
 
 [node name="roof" type="Sprite2D" parent="main_house"]
-visible = false
 z_index = 70
-position = Vector2(0, 4)
+position = Vector2(0, -2.72222)
 scale = Vector2(1, 1.10938)
 texture = ExtResource("3_vy7fe")
 
 [node name="door" type="Sprite2D" parent="main_house"]
 z_index = 50
-position = Vector2(-1.94444, 70.5556)
+position = Vector2(-2, 70)
 texture = ExtResource("4_o1325")
 
 [node name="Location" type="Area2D" parent="."]

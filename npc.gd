@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var npc_name : String = "NPC"
-@export var health : int = 100
+@export var reward : int = 0
 var animations
 @export var move_speed: int = 400
 
