@@ -9,7 +9,7 @@ var last_direction = Vector2.ZERO
 @export var SPEED = 600.0
 var WALK_SPEED = 600
 var RUN_SPEED = 2000
-
+var state_dialog = false
 func _ready():
 	$GPUParticles2D.emitting = false
 
@@ -34,13 +34,14 @@ func dialog_player():
 		$CanvasLayer/Tip.show()
 	else:
 		$CanvasLayer/Tip.hide()
-	if can_dialog and Input.is_action_just_pressed("ui_interact"):
-		can_dialog = false
-		
-		print(nearest_body_object.name)
-		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/" + nearest_body_object.name + ".dialogue"), "start")
-		await DialogueManager.dialogue_ended
-		can_dialog = true
+	if Input.is_action_just_pressed("ui_interact"):
+		if can_dialog and !state_dialog:
+			state_dialog = true
+			
+			print(nearest_body_object.name)
+			DialogueManager.show_example_dialogue_balloon(load("res://dialogue/" + nearest_body_object.name + ".dialogue"), "start")
+			await DialogueManager.dialogue_ended
+			state_dialog = false
 	if can_train and Input.is_action_just_pressed("attack") and can_train2:
 		State.up_strength()
 		$"../train_dummy".kicked()
@@ -108,11 +109,14 @@ func _on_player_area_entered(area: Area2D) -> void:
 
 
 func _on_player_area_exited(area: Area2D) -> void:
+	$'..'.after_pause_dialog = false
 	can_dialog = false
 	can_train = false
 
 
 func _on_player_body_entered(body: Node2D) -> void:
-	nearest_body_object = body
+	print(body)
+	
 	if body.is_in_group("npcs"):
+		nearest_body_object = body
 		can_dialog = true

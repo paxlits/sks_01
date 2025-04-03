@@ -3,7 +3,7 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 
 ## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
-
+@onready var portrait: TextureRect = %Portrait
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
@@ -97,6 +97,13 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	var portrait_path: String = "res://portraits/%s.png" % dialogue_line.character.to_lower()
+	print(portrait_path)
+	if FileAccess.file_exists(portrait_path):
+		print("penis")
+		portrait.texture = load(portrait_path)
+	else:
+		portrait.texture = null
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

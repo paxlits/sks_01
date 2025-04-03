@@ -3,6 +3,7 @@ extends Node2D
 @onready var pause_menu = $Player/PauseMenu
 var paused = false
 var save_path = "user://save.save"
+var after_pause_dialog = false
 func _ready() -> void:
 	load_scene()
 	pause_menu.hide()
@@ -57,7 +58,12 @@ func pauseMenu():
 	if paused:
 		pause_menu.hide()
 		Engine.time_scale = 1
+		if after_pause_dialog:
+			$Player.can_dialog = true
 	else:
+		if $Player.can_dialog:
+			$Player.can_dialog = false
+			after_pause_dialog = true
 		pause_menu.show()
 		Engine.time_scale = 0
 		

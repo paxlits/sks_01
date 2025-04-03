@@ -1300,7 +1300,6 @@ visibility_rect = Rect2(-100, -100, 1500, 1500)
 process_material = SubResource("ParticleProcessMaterial_muem4")
 
 [node name="PauseMenu" parent="Player" instance=ExtResource("4_tbgi4")]
-z_index = 4096
 
 [node name="train_dummy" parent="." instance=ExtResource("6_tefeu")]
 position = Vector2(660, 31)
